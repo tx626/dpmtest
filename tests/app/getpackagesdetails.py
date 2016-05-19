@@ -29,7 +29,7 @@ if SHOW_TIME:
     from datetime import datetime
 
 PAGE_SIZE = 8
-CAT = ['cat0', 'cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7']
+CAT = ['cat0']
 RANDOM_CAT = True
 
 def test():
@@ -65,7 +65,10 @@ def test():
         if SHOW_TIME:
             log_debug('get_counter', 'time=%d sec' % (datetime.utcnow() - start_time).seconds)
         log_debug('get_counter', 'counter=%s' % str(counter))
-        rank = randint(0, (int(counter)  + PAGE_SIZE  - 1) / PAGE_SIZE - 1)
+        if int(counter) < 1:
+            rank = 0
+        else:
+            rank = randint(0, (int(counter)  + PAGE_SIZE  - 1) / PAGE_SIZE - 1)
         log_debug('get_counter', 'rank=%d' % rank)
         
         if SHOW_TIME:

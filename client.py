@@ -22,7 +22,8 @@ import resource
 from lib import mode
 from lib.util import get_addr
 from threading import Thread
-from conf.dpmtest import CLI_PORT, SRV_PORT, SRV_ADDR
+from conf.servers import SRV_ADDR
+from conf.dpmtest import CLI_PORT, SRV_PORT
 
 def start_client():
     cli = zerorpc.Client()
@@ -68,8 +69,8 @@ class Listener(Thread):
             from tests.app.gettop import test
         elif self.mode == mode.APP_GETTOPDETAILS:
             from tests.app.gettopdetails import test
-        elif self.mode == mode.APP_GETHASPACKAGE:
-            from tests.app.gethaspackage import test
+        elif self.mode == mode.APP_HASPACKAGE:
+            from tests.app.haspackage import test
         elif self.mode == mode.DRV_UPLOAD:
             from tests.driver.upload import test
         elif self.mode == mode.DRV_INSTALL:
@@ -81,5 +82,6 @@ if __name__ == '__main__':
     resource.setrlimit(resource.RLIMIT_NOFILE, (4096, max_open_files_hard))
     s = zerorpc.Server(Listener())
     Thread(target=start_client).start()
+    print 'client--addr', get_addr()
     s.bind("tcp://%s:%d" % (get_addr(), CLI_PORT))
     s.run()

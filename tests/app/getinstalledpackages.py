@@ -65,6 +65,6 @@ def test():
             return False
         get_inst_pkgs_cnt += 1
         log_debug('get_installed_packages', 'get_inst_pkgs_cnt=%d' % get_inst_pkgs_cnt)
-        log_debug('get_installer_packages', 'installed packages are %s' % str(result['data']))
+        log_debug('get_installer_packages', 'the packages of %s has installed are %s' % (str(username), str(result['data'])))
         if SHOW_TIME:
             log_debug('get_installed_packages', 'time=%d sec' % (datetime.utcnow() - start_time).seconds)

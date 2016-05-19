@@ -24,7 +24,7 @@ from conf.dpmtest import  TEST_ROUNDS, SHOW_TIME, USER, USER_START, DRIVER_PACKA
 if SHOW_TIME:
     from datetime import datetime
 
-DRIVER_PATH = '/root/testfiles/driver'
+DRIVER_PATH = '/root/testfiles/driver/driver4'
 
 def test():
     log_debug('upload', 'start testing ')

@@ -27,9 +27,9 @@ from conf.dpmtest import TEST_ROUNDS, SHOW_TIME, PKG_START, PACKAGE
 if SHOW_TIME:
     from datetime import datetime
 
-PKG = 'pkg'
-PKG_NUM = 200
-CAT = ['cat0', 'cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7']
+PKG = 'bbb3'
+PKG_NUM = 50
+CAT = ['cat0']
 RANDOM_PKG = True
 
 def test():

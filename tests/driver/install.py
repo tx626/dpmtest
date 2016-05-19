@@ -46,7 +46,7 @@ def test():
             start_time = datetime.utcnow()
         
         if RANDOM_DRIVER:
-            driver_num = randint(0, DRIVER_NUM - 1)
+            driver_num = randint(1100, DRIVER_NUM - 1)
             package = DRIVER_PACKAGE + str(driver_num)
         else:
             package = DRIVER_PACKAGE + str(DRIVER_START + i)

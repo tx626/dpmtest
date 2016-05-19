@@ -36,7 +36,7 @@ class Stream(object):
     
     def write(self, buf):
         if len(self._uid) != UID_LEN:
-            log_err('Stream',  'invalid uid')
+            log_err('Stream11111',  'invalid uid')
             return
         if self._key:
             flg = FLG_SEC

@@ -31,7 +31,8 @@ from log import log_debug, log_err
 from lib.zip import zip_dir, unzip_file
 from conf.path import PATH_DRIVER 
 from component.rpcclient import RPCClient
-from conf.dpmtest import MANAGER_PORTS, MANAGER_SERVERS, FRONTEND_SERVERS, FRONTEND_PORT, IFACE
+from conf.servers import SERVER_FRONTEND, SERVER_MANAGER
+from conf.dpmtest import MANAGER_PORTS, FRONTEND_PORT, IFACE
 
 APP = 'app'
 DRIVER = 'driver'
@@ -41,12 +42,12 @@ def get_addr():
     return  socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', IFACE[:15]))[20:24])
 
 def get_frontend():
-    n = randint(0, len(FRONTEND_SERVERS) - 1)
-    return FRONTEND_SERVERS[n]
+    n = randint(0, len(SERVER_FRONTEND) - 1)
+    return SERVER_FRONTEND[n]
 
 def get_manager():
-    n = randint(0, len(MANAGER_SERVERS) - 1)
-    server =  MANAGER_SERVERS[n]
+    n = randint(0, len(SERVER_MANAGER) - 1)
+    server =  SERVER_MANAGER[n]
     return server
 
 def get_port():
@@ -120,7 +121,7 @@ def install_driver(uid, package, version=None):
     return True
 
 def _check_dep(path):
-    if os.path.isfile(path):
+    if os.path.exists(path):
         with open(path) as file_dependency:
             lines = file_dependency.readlines()
             for line in lines:

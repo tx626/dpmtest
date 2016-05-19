@@ -28,7 +28,7 @@ from conf.dpmtest import TEST_ROUNDS, SHOW_TIME, CATEGORY
 if SHOW_TIME:
     from datetime import datetime
 
-CAT = ['cat0', 'cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7']
+CAT = ['cat0]
 RANDOM_CAT = True
 
 def test():

@@ -28,7 +28,7 @@ if SHOW_TIME:
     from datetime import datetime
 
 PAGE_SIZE = 8
-PATH = '/root/testfiles/pkgdir'
+PATH = '/root/testfiles/cat0_bbb3'
 
 def test():
     log_debug('upload', 'start testing ')
@@ -72,7 +72,10 @@ def test():
         if SHOW_TIME:
             log_debug('get_counter', 'time=%d sec' % (datetime.utcnow() - start_time).seconds)
         log_debug('get_counter', 'counter=%s' % str(counter))
-        rank = randint(0, (int(counter)  + PAGE_SIZE  - 1) / PAGE_SIZE - 1)
+        if int(counter) < 1:
+            rank = 0
+        else:
+            rank = randint(0, (int(counter)  + PAGE_SIZE  - 1) / PAGE_SIZE - 1)
         log_debug('get_counter', 'rank=%d' % rank)
         
         if SHOW_TIME:
@@ -83,7 +86,7 @@ def test():
         ret = ws.recv()
         ws.close()
         result = json.loads(ret)
-        if not result or 'get_packages_details' != result['operator'] or CATEGORY != result['category'] or rank != result['rank'] or not  result['data']:
+        if not result or 'get_packages_details' != result['operator'] or CATEGORY != result['category'] or rank != result['rank'] or not result['data']:
             log_err('get_packages_details', 'failed to get packages details')
             return False
         ret = result['data']

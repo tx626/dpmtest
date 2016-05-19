@@ -28,8 +28,8 @@ from conf.dpmtest import TEST_ROUNDS, SHOW_TIME, USER_START, PKG_START, USER, PA
 if SHOW_TIME:
     from datetime import datetime
 
-PKG = 'pkg'
-CAT = ['cat0', 'cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7']
+PKG = 'bbb3'
+CAT = ['cat0']
 RANDOM_PKG = True
 
 def test():
@@ -67,7 +67,7 @@ def test():
         cat_num = randint(0, len(CAT) - 1)
         cat_name = CAT[cat_num]
         if RANDOM_PKG:
-            pkg_num = randint(60, PKG_NUM - 1)
+            pkg_num = randint(40, PKG_NUM - 1)
             package = cat_name + '_' + PKG + str(pkg_num)
         else:
             package = PACKAGE + str(PKG_START + i)
