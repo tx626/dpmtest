@@ -20,6 +20,7 @@
 import json
 from random import randint
 from lib.log import log_debug, log_err
+from conf.category import CATEGORIES
 from lib.util import get_manager, get_port
 from websocket import create_connection
 from conf.dpmtest import TEST_ROUNDS, SHOW_TIME, PKG_START, PACKAGE
@@ -28,8 +29,7 @@ if SHOW_TIME:
     from datetime import datetime
 
 PKG = 'bbb3'
-PKG_NUM = 50
-CAT = ['cat0']
+PKG_NUM = 200
 RANDOM_PKG = True
 
 def test():
@@ -40,8 +40,8 @@ def test():
             start_time = datetime.utcnow()
         
         if RANDOM_PKG:
-            cat_num = randint(0, len(CAT) - 1)
-            cat_name = CAT[cat_num]
+            cat_num = randint(0, len(CATEGORIES.keys()) - 1)
+            cat_name = CATEGORIES.keys()[cat_num]
             pkg_num = randint(0, PKG_NUM - 1)
             package = cat_name + '_' + PKG + str(pkg_num)
         else:

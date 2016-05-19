@@ -29,13 +29,10 @@ class Coordinator(object):
     def join(self, addr):
         self._cnt += 1
         self._addr.append(addr)
-        print 'server 4-1', self._addr
         if self._cnt == CLIENTS:
             for i in self._addr:
-                print 'server 4-2', i
                 cli = zerorpc.Client()
                 cli.connect('tcp://%s:%d' % (i, CLI_PORT))
-                print 'server 4-3'
                 cli.start_test(MODE)
 
 if __name__ == '__main__':

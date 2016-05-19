@@ -29,7 +29,6 @@ if SHOW_TIME:
     from datetime import datetime
 
 PAGE_SIZE = 8
-CAT = ['cat0']
 RANDOM_CAT = True
 
 def test():
@@ -40,8 +39,8 @@ def test():
             start_time = datetime.utcnow()
         
         if RANDOM_CAT:
-            cat_num = randint(0, len(CAT) - 1)
-            cat_name = CAT[cat_num]
+            cat_num = randint(0, len(CATEGORIES.keys()) - 1)
+            cat_name = CATEGORIES.keys()[cat_num]
             if not CATEGORIES.has_key(cat_name):
                 log_err('get_packages_details', 'failed to get the category, invalid category is %s' % str(cat_name))
                 return False

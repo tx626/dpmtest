@@ -29,7 +29,6 @@ if SHOW_TIME:
     from datetime import datetime
 
 PKG = 'bbb3'
-CAT = ['cat0']
 RANDOM_PKG = True
 
 def test():
@@ -64,8 +63,8 @@ def test():
         
         if SHOW_TIME:
             start_time = datetime.utcnow()
-        cat_num = randint(0, len(CAT) - 1)
-        cat_name = CAT[cat_num]
+        cat_num = randint(0, len(CATEGORIES.keys()) - 1)
+        cat_name = CATEGORIES.keys()[cat_num]
         if RANDOM_PKG:
             pkg_num = randint(40, PKG_NUM - 1)
             package = cat_name + '_' + PKG + str(pkg_num)

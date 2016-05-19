@@ -82,6 +82,5 @@ if __name__ == '__main__':
     resource.setrlimit(resource.RLIMIT_NOFILE, (4096, max_open_files_hard))
     s = zerorpc.Server(Listener())
     Thread(target=start_client).start()
-    print 'client--addr', get_addr()
     s.bind("tcp://%s:%d" % (get_addr(), CLI_PORT))
     s.run()
